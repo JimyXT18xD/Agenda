@@ -149,7 +149,7 @@ int main(int argc, char *argv[]) {
 					break;
 				default:
 					cout << "Up's, ha ocurrido algo inesperado, presione una tecla para continuar!." << endl;
-					system("PAUSE>NUL");
+					system("pause");
 					break;
 			}
 		}
@@ -160,12 +160,12 @@ int main(int argc, char *argv[]) {
 }
 
 int MenuPrimario(){
-	char x;										/*Sirve para almacenar la respuesta (opci?n)*/
+	int x;										/*Sirve para almacenar la respuesta (opci?n)*/
 	
 	LimpiarPantalla();
 	
 	cout << Regla << endl;
-	cout << "|\tBienvenido a tu Agenda Electr?nica (Contactos)\t    |" << endl;
+	cout << "|\tBienvenido a tu Agenda Electronica (Contactos)\t    |" << endl;
 	cout << Regla << endl;
 	
 	cout << "|\t\t\t\t\t\t\t    |" << endl;
@@ -188,11 +188,11 @@ int MenuSecundario(){
 	LimpiarPantalla();
 	
 	cout << Regla << endl;
-	cout << "|\tBienvenido a tu Agenda Electr?nica (Contactos)\t    |" << endl;
+	cout << "|\tBienvenido a tu Agenda Electronica (Contactos)\t    |" << endl;
 	cout << Regla << endl;
 	
 	cout << "|\t\t\t\t\t\t\t    |" << endl;
-	cout << "|\t\t      S? hay contactos" << " (" << (ContactosRegistrados - ContactosEliminados) << ")\t\t    |" << endl;
+	cout << "|\t\t      Si hay contactos" << " (" << (ContactosRegistrados - ContactosEliminados) << ")\t\t    |" << endl;
 	cout << "|\t\t\t\t\t\t\t    |" << endl;
 		
 	cout << Regla << endl;
@@ -212,7 +212,7 @@ void Insertar(struct Agenda Contactos[]){
 		
 		/*Se verifica si hay espacio en la agenda*/
 		if (ContactosRegistrados < CANTIDAD){
-			cout << "\n\tN?mero de contacto: " << (ContactosRegistrados + 1) << endl;
+			cout << "\n\tNumero de contacto: " << (ContactosRegistrados + 1) << endl;
 			cout << "\tNombre:   ";
 			cin >>  Contactos[ContactosRegistrados].Nombre;
 			
@@ -224,7 +224,7 @@ void Insertar(struct Agenda Contactos[]){
 				
 				/*Si existe se intenta ingresar otro*/
 				do {
-					cout << "\n\t?Desea agregar otro contacto?" << endl;
+					cout << "\n\tDesea agregar otro contacto?" << endl;
 					cout << "\t(1) S?, (2) No: ";
 					cin >> x;
 					
@@ -235,7 +235,7 @@ void Insertar(struct Agenda Contactos[]){
 						// volvemos a InsertarMenu
 						break;
 					case 2:
-						Detenerse();
+						salir = 1;
 						break;
 					default:
 						cout << "Up's, ha ocurrido algo inesperado, presione una tecla para continuar!." << endl;
@@ -244,7 +244,7 @@ void Insertar(struct Agenda Contactos[]){
 				}
 			}
 			
-			cout << "\tTel?fono: ";									
+			cout << "\tTelefono: ";									
 			cin >>  Contactos[ContactosRegistrados].Telefono;	/*Agregando valor a atributo Telefono*/
 			
 			cout << "\tCelular:  ";
@@ -258,11 +258,11 @@ void Insertar(struct Agenda Contactos[]){
 			
 			ContactosRegistrados++;									/*Se incrementa la variable, indicando nuevo contacto*/
 			
-			cout << "\n\t?Agregado con ?xito!" << endl << endl;
+			cout << "\n\tAgregado con exito!" << endl << endl;
 			
 		
 			do {
-				cout << "\n\t?Desea agregar otro contacto?" << endl;
+				cout << "\n\tDesea agregar otro contacto?" << endl;
 				cout << "\t(1) S?, (2) No: ";
 				cin >> x;
 				
@@ -273,7 +273,7 @@ void Insertar(struct Agenda Contactos[]){
 					// volvemos a InsertarMenu
 					break;
 				case 2:
-					Detenerse();
+					salir = 1;
 					break;
 				default:
 					cout << "Up's, ha ocurrido algo inesperado, presione una tecla para continuar!." << endl;
@@ -282,7 +282,7 @@ void Insertar(struct Agenda Contactos[]){
 			}
 			
 		} else {
-			cout << "Lleg? al l?mite de contactos permitidos en la agenda." << endl << endl;
+			cout << "Llego al limite de contactos permitidos en la agenda." << endl << endl;
 		}
 	}
 	while(salir == 0);
@@ -320,7 +320,7 @@ void Buscar(struct Agenda Contactos[]){
 				break;
 			default:
 				cout << "Up's, ha ocurrido algo inesperado, presione una tecla para continuar!." << endl;
-				system("PAUSE>NUL");
+				system("pause");
 				break;
 		}
 	
@@ -334,8 +334,8 @@ void Buscar(struct Agenda Contactos[]){
 int BuscarMenuCategoria(){
 	int x; 
 	
-	cout << endl << "\n\t\t     Realizar bï¿½squeda por:" << endl << endl;
-	cout << "(1)Nombre | (2)Tel?fono | (3)Celular | (4)Email | (5)Volver" << endl;
+	cout << endl << "\n\t\t     Realizar busqueda por:" << endl << endl;
+	cout << "(1)Nombre | (2)Telefono | (3)Celular | (4)Email | (5)Volver" << endl;
 	cout << Regla << endl;
 	
 	cout << "Esperando respuesta: ";
@@ -377,7 +377,7 @@ void BuscarPorTelefono(struct Agenda Contactos[]){
 	
 	string PorTelefono;
 	
-	cout << "\n\tDigite el n?mero de tel?fono: ";
+	cout << "\n\tDigite el numero de telefono: ";
 	cin >>  PorTelefono;
 	cout << endl;
 	
@@ -403,7 +403,7 @@ void BuscarPorCelular(struct Agenda Contactos[]){
 	
 	string PorCelular;
 	
-	cout << "\n\tDigite el n?mero de celular: ";
+	cout << "\n\tDigite el numero de celular: ";
 	cin >>  PorCelular;
 	cout << endl;
 	
@@ -465,18 +465,18 @@ void Listar(struct Agenda Contactos[]){
 				Dormir(1);						/*Aplicar retraso de 1 segundo*/
 				
 				if (contactos_restantes > 1)
-					cout << "\t-- A?n quedan " << contactos_restantes << " por visualizar --" << endl;
+					cout << "\t-- Aun quedan " << contactos_restantes << " por visualizar --" << endl;
 				else if (contactos_restantes == 1)
-					cout << "\t-- S?lo queda " << contactos_restantes << " por visualizar --" << endl;
+					cout << "\t-- Solo queda " << contactos_restantes << " por visualizar --" << endl;
 				
 				Detenerse();
 				cout << endl;
 			}
 			
 			/*Impresi?n de todos los datos de los contactos resultates*/
-			cout << "\n\tN?mero de contacto: " << (x+1) << endl;
+			cout << "\n\tNumero de contacto: " << (x+1) << endl;
 			cout << "\t\tNombre:   " << Contactos[i].Nombre << endl;
-			cout << "\t\tTel?fono: " << Contactos[i].Telefono << endl;
+			cout << "\t\tTelefono: " << Contactos[i].Telefono << endl;
 			cout << "\t\tCelular:  " << Contactos[i].Celular << endl;
 			cout << "\t\tEmail:    " << Contactos[i].Email << endl;
 			cout << "\t\tFecha N.: " << Contactos[i].Fecha.Nacimiento << endl << endl;
@@ -494,7 +494,7 @@ void Imprimir(struct Agenda Contactos[], int posicion){
 	
 	/*Imprime el contacto que est? en una posici?n espec?fica de la agenda*/
 	cout << "\n\t\tNombre:   " << Contactos[posicion].Nombre << endl;
-	cout << "\t\tTelï¿½fono: " << Contactos[posicion].Telefono << endl;
+	cout << "\t\tTelefono: " << Contactos[posicion].Telefono << endl;
 	cout << "\t\tCelular:  " << Contactos[posicion].Celular << endl;
 	cout << "\t\tEmail:    " << Contactos[posicion].Email << endl;
 	cout << "\t\tFecha N.: " << Contactos[posicion].Fecha.Nacimiento << endl << endl;
@@ -564,7 +564,7 @@ void Actualizar(struct Agenda Contactos[], int posicion){
 				cout << "   Se ha actualizado de \"" << Nombre << "\" a " << "\"" << Contactos[posicion].Nombre << "\"" << endl; 
 				break;
 			case 2:
-				cout << "\tDigite el nuevo tel?fono: ";
+				cout << "\tDigite el nuevo telefono: ";
 				cin >>  Contactos[posicion].Telefono;
 				cout << "   Se ha actualizado de \"" << Telefono << "\" a " << "\"" << Contactos[posicion].Telefono << "\"" << endl; 
 				break;
@@ -607,7 +607,7 @@ void Eliminar(struct Agenda Contactos[], int posicion){
 		Contactos[posicion].Email	= " ";
 		ContactosEliminados++;
 		
-		cout << "\n?El ex-contacto \"" << Nombre <<  "\" ha sido eliminado con ?xito!\n\n";
+		cout << "\nEl ex-contacto \"" << Nombre <<  "\" ha sido eliminado con exito!\n\n";
 	}
 	
 	return;
@@ -641,7 +641,7 @@ void CargarContactos(struct Agenda Contactos[]){
 		LimpiarPantalla();
 			
 		cout << Regla << endl;
-		cout << "|\tBienvenido a tu Agenda Electr?nica (Contactos)\t    |" << endl;
+		cout << "|\tBienvenido a tu Agenda Electronica (Contactos)\t    |" << endl;
 		cout << Regla << endl;
 			
 		cout << "(1) Cargar contactos previos | (2) Nueva agenda | (3) Salir |" << endl;
@@ -718,11 +718,11 @@ bool HayContactos(struct Agenda Contactos[]){
 
 void Detenerse(){
 	cout << "\t¡Presione una tecla para continuar!";
-	system("PAUSE");								/*Pausar la aplicación sin mensaje de salida*/
+	system("pause");								/*Pausar la aplicación sin mensaje de salida*/
 }
 
 void LimpiarPantalla(){
-	system("CLS");									/*Limpiar pantalla*/
+	system("cls");									/*Limpiar pantalla*/
 }
 
 void Dormir(int x){
